@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Entities", "Sup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Services", "SuperMarket.Services\SuperMarket.Services.csproj", "{C2769E55-DE31-4F54-91A7-735AC3E81D4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupeMarket.Persistence.EF", "SupeMarket.Persistence.EF\SupeMarket.Persistence.EF.csproj", "{DDB411C3-5C6D-4396-8346-B8C72768B58C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C2769E55-DE31-4F54-91A7-735AC3E81D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2769E55-DE31-4F54-91A7-735AC3E81D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2769E55-DE31-4F54-91A7-735AC3E81D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
