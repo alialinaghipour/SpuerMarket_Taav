@@ -6,7 +6,7 @@ namespace SuperMarket.Services.ProductCategories.Contracts
 {
     public interface ProductCategoryServices
     {
-        public IEnumerable<GetAllProductCategoryDto> GetAll();
+        public IList<GetAllProductCategoryDto> GetAll();
         public FindByIdProductCategoryDto FindById(int id);
         public void Add(AddProductCategoryDto dto);
         public void Update(int id, UpdateProductCategoryDto dto);

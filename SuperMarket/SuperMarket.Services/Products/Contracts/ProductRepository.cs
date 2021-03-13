@@ -7,7 +7,7 @@ namespace SuperMarket.Services.Products.Contracts
 {
     public interface ProductRepository
     {
-        public IEnumerable<GetAllProductDto> GetAll();
+        public IList<GetAllProductDto> GetAll();
         public GetByIdProductDto GetById(int id);
         public void Add(Product product);
         public void Delete(int id);

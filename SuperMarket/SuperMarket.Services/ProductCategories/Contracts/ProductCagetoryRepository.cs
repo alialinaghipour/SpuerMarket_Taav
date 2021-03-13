@@ -7,10 +7,11 @@ namespace SuperMarket.Services.ProductCategories.Contracts
 {
     public interface ProductCagetoryRepository
     {
-        public IEnumerable<GetAllProductCategoryDto> GetAll();
-        public FindByIdProductCategoryDto FindById(int id);
+        public IList<GetAllProductCategoryDto> GetAll();
+        public FindByIdProductCategoryDto GetById(int id);
+        public ProductCategory FindById(int id);
         public void Add(ProductCategory category);
-        public void Delete(int id);
+        public void Delete(ProductCategory category);
         public bool IsExistsById(int id);
         public bool IsTitleDuplicate(string title);
     }

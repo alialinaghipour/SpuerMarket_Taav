@@ -47,11 +47,7 @@ namespace SuperMarket.Services.ProductCategories
         {
             var category = _repository.FindById(id);
 
-            if (category == null)
-            {
-                //خطا میسازم ، که فعلا حال ندارم
-                throw new Exception();
-            }
+            CheckedProductCategoryExists(category);
 
             CheckedTitleDeuplicate(dto.Tilte);
 
@@ -60,12 +56,22 @@ namespace SuperMarket.Services.ProductCategories
             _unitOfWork.Complete();
         }
 
+        private  void CheckedProductCategoryExists(ProductCategory category)
+        {
+            if (category == null)
+            {
+                //خطا میسازم ، که فعلا حال ندارم
+                throw new Exception();
+            }
+        }
+
         public void Delete(int id)
         {
+            var category = _repository.FindById(id);
 
-            CheckedExisteById(id);
+            CheckedProductCategoryExists(category);
 
-            _repository.Delete(id);
+            _repository.Delete(category);
 
             _unitOfWork.Complete();
         }
@@ -83,10 +89,10 @@ namespace SuperMarket.Services.ProductCategories
         {
             CheckedExisteById(id);
 
-           return _repository.FindById(id);
+           return _repository.GetById(id);
         }
 
-        public IEnumerable<GetAllProductCategoryDto> GetAll()
+        public IList<GetAllProductCategoryDto> GetAll()
         {
            return _repository.GetAll();
         }

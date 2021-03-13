@@ -104,7 +104,7 @@ namespace SuperMarket.Services.Products
             CheckedProductExistsById(id);
             return _repository.GetById(id);
         }
-        public IEnumerable<GetAllProductDto> GetAll()
+        public IList<GetAllProductDto> GetAll()
         {
             return _repository.GetAll();
         }
