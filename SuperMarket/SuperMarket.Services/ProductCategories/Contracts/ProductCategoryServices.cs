@@ -9,7 +9,7 @@ namespace SuperMarket.Services.ProductCategories.Contracts
         public IEnumerable<GetAllProductCategoryDto> GetAll();
         public FindByIdProductCategoryDto FindById(int id);
         public void Add(AddProductCategoryDto dto);
-        public void Update(UpdateProductCategoryDto dto);
+        public void Update(int id, UpdateProductCategoryDto dto);
         public void Delete(int id);
     }
 }

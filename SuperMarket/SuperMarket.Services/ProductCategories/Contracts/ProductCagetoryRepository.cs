@@ -10,7 +10,6 @@ namespace SuperMarket.Services.ProductCategories.Contracts
         public IEnumerable<GetAllProductCategoryDto> GetAll();
         public FindByIdProductCategoryDto FindById(int id);
         public void Add(ProductCategory category);
-        public void Update(ProductCategory category);
         public void Delete(int id);
         public bool IsExistsById(int id);
         public bool IsTitleDuplicate(string title);
