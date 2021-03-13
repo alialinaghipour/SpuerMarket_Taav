@@ -21,11 +21,8 @@ namespace SuperMarket.Services.ProductCategories
 
         public void Add(AddProductCategoryDto dto)
         {
-            if (_repository.IsTitleDuplicate(dto.Tilte))
-            {
-                //خطا میسازم ، که فعلا حال ندارم
-                throw new Exception();
-            }
+
+            CheckedTitleDeuplicate(dto.Tilte);
 
             ProductCategory category = new ProductCategory()
             {
@@ -37,26 +34,54 @@ namespace SuperMarket.Services.ProductCategories
             _unitOfWork.Complete();
         }
 
-        public void Delete(int id)
+        private void CheckedTitleDeuplicate(string title)
         {
-            if (!_repository.IsExistsById(id))
+            if (_repository.IsTitleDuplicate(title))
             {
                 //خطا میسازم ، که فعلا حال ندارم
                 throw new Exception();
             }
+        }
+
+        public void Update(int id,UpdateProductCategoryDto dto)
+        {
+            var category = _repository.FindById(id);
+
+            if (category == null)
+            {
+                //خطا میسازم ، که فعلا حال ندارم
+                throw new Exception();
+            }
+
+            CheckedTitleDeuplicate(dto.Tilte);
+
+            category.Tilte = dto.Tilte;
+
+            _unitOfWork.Complete();
+        }
+
+        public void Delete(int id)
+        {
+
+            CheckedExisteById(id);
 
             _repository.Delete(id);
 
             _unitOfWork.Complete();
         }
 
-        public FindByIdProductCategoryDto FindById(int id)
+        private void CheckedExisteById(int id)
         {
             if (!_repository.IsExistsById(id))
             {
                 //خطا میسازم ، که فعلا حال ندارم
                 throw new Exception();
             }
+        }
+
+        public FindByIdProductCategoryDto FindById(int id)
+        {
+            CheckedExisteById(id);
 
            return _repository.FindById(id);
         }
@@ -66,25 +91,5 @@ namespace SuperMarket.Services.ProductCategories
            return _repository.GetAll();
         }
 
-        public void Update(int id,UpdateProductCategoryDto dto)
-        {
-            var category = _repository.FindById(id);
-
-            if (category != null)
-            {
-                //خطا میسازم ، که فعلا حال ندارم
-                throw new Exception();
-            }
-
-            if (_repository.IsTitleDuplicate(dto.Tilte))
-            {
-                //خطا میسازم ، که فعلا حال ندارم
-                throw new Exception();
-            }
-
-            category.Tilte = dto.Tilte;
-
-            _unitOfWork.Complete();
-        }
     }
 }

@@ -13,5 +13,6 @@ namespace SuperMarket.Services.Products.Contracts
         public void Delete(int id);
         public GetByCodeProductDto GetByProductCode(string code);
         public bool IsCodeDuplicate(string code);
+        public bool IsExistsById(int id);
     }
 }
