@@ -93,7 +93,7 @@ namespace SuperMarket.Services.Products
 
             CheckedExistsProduct(product);
 
-            _repository.Delete(product);
+            _repository.Delete(product  );
 
             _unitOfWork.Complete();
         }
