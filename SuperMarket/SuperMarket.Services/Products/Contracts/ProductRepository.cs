@@ -9,8 +9,9 @@ namespace SuperMarket.Services.Products.Contracts
     {
         public IList<GetAllProductDto> GetAll();
         public GetByIdProductDto GetById(int id);
+        public Product FindById(int id);
         public void Add(Product product);
-        public void Delete(int id);
+        public void Delete(Product product);
         public Product FindByProductCode(string code);
         public bool IsCodeDuplicate(string code);
         public bool IsExistsById(int id);

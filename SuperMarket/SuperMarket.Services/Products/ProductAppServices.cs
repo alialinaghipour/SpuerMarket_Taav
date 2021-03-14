@@ -65,13 +65,9 @@ namespace SuperMarket.Services.Products
 
             CheckedProductCategoryExistsById(dto.CategoryId);
 
-            var product = GetById(id);
+            var product = FindById(id);
 
-            if (product == null)
-            {
-                //بعدا مینویسم
-                throw new Exception();
-            }
+            CheckedExistsProduct()
 
             product.Code = dto.Code;
             product.CategoryId = dto.CategoryId;
@@ -82,9 +78,18 @@ namespace SuperMarket.Services.Products
             _unitOfWork.Complete();
         }
 
+        private void CheckedExistsProduct(Product product)
+        {
+            if (product == null)
+            {
+                //**********
+                throw new Exception();
+            }
+        }
+
         public void Delete(int id)
         {
-            CheckedProductExistsById(id);
+            var product = GetById(id);
 
             _repository.Delete(id);
 
