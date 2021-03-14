@@ -22,11 +22,11 @@ namespace SuperMarket.Services.Products
             _cagetoryRepository = cagetoryRepository;
         }
 
-        public void Add(AddProductDto dto)
+        public async Task Add(AddProductDto dto)
         {
-            CheckedCodeDuplicate(dto.Code);
+            await CheckedCodeDuplicate(dto.Code);
 
-            CheckedProductCategoryExistsById(dto.CategoryId);
+            await CheckedProductCategoryExistsById(dto.CategoryId);
 
             Product product = new Product()
             {
@@ -42,9 +42,9 @@ namespace SuperMarket.Services.Products
             _unitOfWork.Complete();
         }
 
-        private void CheckedCodeDuplicate(string code)
+        private async Task CheckedCodeDuplicate(string code)
         {
-            if (_repository.IsCodeDuplicate(code))
+            if (await _repository.IsCodeDuplicate(code))
             {
                 //بعدا مینویسم
                 throw new Exception();
@@ -60,13 +60,13 @@ namespace SuperMarket.Services.Products
             }
         }
 
-        public void Update(int id, UpdateProductDto dto)
+        public async Task Update(int id, UpdateProductDto dto)
         {
-            CheckedCodeDuplicate(dto.Code);
+           await CheckedCodeDuplicate(dto.Code);
 
-            CheckedProductCategoryExistsById(dto.CategoryId);
+           await CheckedProductCategoryExistsById(dto.CategoryId);
 
-            var product = _repository.FindById(id);
+            var product = await _repository.FindById(id);
 
             CheckedExistsProduct(product);
 
@@ -88,33 +88,33 @@ namespace SuperMarket.Services.Products
             }
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var product = _repository.FindById(id);
+            var product =await _repository.FindById(id);
 
             CheckedExistsProduct(product);
 
-            _repository.Delete(product  );
+            _repository.Delete(product);
 
             _unitOfWork.Complete();
         }
-        private void CheckedProductExistsById(int id)
+        private async Task CheckedProductExistsById(int id)
         {
-            if (!_repository.IsExistsById(id))
+            if (!await _repository.IsExistsById(id))
             {
                 //بعدا مینویسم
                 throw new Exception();
             }
         }
 
-        public GetByIdProductDto GetById(int id)
+        public async Task<GetByIdProductDto> GetById(int id)
         {
-            CheckedProductExistsById(id);
-            return _repository.GetById(id);
+            await CheckedProductExistsById(id);
+            return await _repository.GetById(id);
         }
-        public IList<GetAllProductDto> GetAll()
+        public async Task<IList<GetAllProductDto>> GetAll()
         {
-            return _repository.GetAll();
+            return await _repository.GetAll();
         }
 
 

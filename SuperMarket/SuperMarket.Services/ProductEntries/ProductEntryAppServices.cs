@@ -5,6 +5,7 @@ using SuperMarket.Services.Products.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.ProductEntries
 {
@@ -21,12 +22,10 @@ namespace SuperMarket.Services.ProductEntries
             _productRepository = productRepository;
         }
 
-        public void Add(AddProductEntryDto dto)
+        public async Task Add(AddProductEntryDto dto)
         {
 
-            CheckedCountMoreZero(dto.Count);
-
-            var product = _productRepository.FindByProductCode(dto.ProdcutCode);
+            var product = await _productRepository.FindByProductCode(dto.ProdcutCode);
 
             CheckedExistsProduct(product);
 
@@ -53,30 +52,20 @@ namespace SuperMarket.Services.ProductEntries
             }
         }
 
-        private void CheckedCountMoreZero(int count)
+        public async Task<IList<GetAllProductEntryDto>> GetAll()
         {
-            const int oneNumber = 1;
-            if (count < oneNumber)
-            {
-                //**********
-                throw new Exception();
-            }
+            return await _repository.GetAll();
         }
 
-        public IList<GetAllProductEntryDto> GetAll()
+        public async Task<GetByIdProductEntryDto> GetById(int id)
         {
-            return _repository.GetAll();
+            await CheckedExistsProductEntry(id);
+            return await _repository.GetById(id);
         }
 
-        public GetByIdProductEntryDto GetById(int id)
+        private async Task CheckedExistsProductEntry(int id)
         {
-            CheckedExistsProductEntry(id);
-            return _repository.GetById(id);
-        }
-
-        private void CheckedExistsProductEntry(int id)
-        {
-            if (!_repository.IsExistsById(id))
+            if (!await _repository.IsExistsById(id))
             {
                 //************
                 throw new Exception();

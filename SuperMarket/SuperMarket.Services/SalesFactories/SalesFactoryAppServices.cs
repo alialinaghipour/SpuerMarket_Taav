@@ -4,6 +4,7 @@ using SuperMarket.Services.Products.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.SalesFactories
 {
@@ -19,13 +20,11 @@ namespace SuperMarket.Services.SalesFactories
             _repository = repository;
             _productRepository = productRepository;
         }
-        public void Add(AddSalesFactorDto dto)
+        public async Task Add(AddSalesFactorDto dto)
         {
             CheckedInformation(dto.IsInformation);
 
-            CheckedCountMoreZero(dto.Count);
-
-            var product = _productRepository.FindByProductCode(dto.ProductCode);
+            var product =await _productRepository.FindByProductCode(dto.ProductCode);
 
             CheckedExistsProduct(product);
 
@@ -52,16 +51,6 @@ namespace SuperMarket.Services.SalesFactories
             }
         }
 
-        private void CheckedCountMoreZero(int count)
-        {
-            const int oneNumber = 1;
-            if (count < oneNumber)
-            {
-                //**********
-                throw new Exception();
-            }
-        }
-
         private void CheckedInformation(bool info)
         {
             if (!info)
@@ -71,20 +60,20 @@ namespace SuperMarket.Services.SalesFactories
             }
         }
 
-        public IList<GetAllSalesFactoryDto> GetAll()
+        public async Task<IList<GetAllSalesFactoryDto>> GetAll()
         {
-            return _repository.GetAll();
+            return await _repository.GetAll();
         }
 
-        public GetByIdSalesFactoryDto GetById(int id)
+        public async Task<GetByIdSalesFactoryDto> GetById(int id)
         {
-            CheckedExistsById(id);
-            return _repository.GetById(id);
+            await CheckedExistsById(id);
+            return await _repository.GetById(id);
         }
 
-        private void CheckedExistsById(int id)
+        private async Task CheckedExistsById(int id)
         {
-            if (!_repository.IsExistsById(id))
+            if (! await _repository.IsExistsById(id))
             {
                 //*********
                 throw new Exception();

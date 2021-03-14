@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SupeMarket.Persistence.EF.ProductEntries
 {
@@ -26,36 +27,36 @@ namespace SupeMarket.Persistence.EF.ProductEntries
             _set.Add(product);
         }
 
-        public ProductEntry FindById(int id)
+        public async Task<ProductEntry> FindById(int id)
         {
-            return _set.Find(id);
+            return await _set.FindAsync(id);
         }
 
-        public IList<GetAllProductEntryDto> GetAll()
+        public async Task<IList<GetAllProductEntryDto>> GetAll()
         {
-            return _set.Select(_ => new GetAllProductEntryDto()
+            return await _set.Select(_ => new GetAllProductEntryDto()
             {
                 Id = _.Id,
                 Count = _.Count,
                 EntryDate = _.EntryDate,
                 ProdcutCode = _.ProdcutCode
-            }).ToList();
+            }).ToListAsync();
         }
 
-        public GetByIdProductEntryDto GetById(int id)
+        public async Task<GetByIdProductEntryDto> GetById(int id)
         {
-            return _set.Select(_ => new GetByIdProductEntryDto()
+            return await _set.Select(_ => new GetByIdProductEntryDto()
             {
                 Id = _.Id,
                 Count = _.Count,
                 EntryDate = _.EntryDate,
                 ProdcutCode = _.ProdcutCode
-            }).SingleOrDefault();
+            }).SingleOrDefaultAsync();
         }
 
-        public bool IsExistsById(int id)
+        public async Task<bool> IsExistsById(int id)
         {
-            return _set.Any(_ => _.Id == id);
+            return await _set.AnyAsync(_ => _.Id == id);
         }
     }
 }

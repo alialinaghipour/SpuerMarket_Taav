@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.ProductEntries.Contracts
 {
     public interface ProductEntryRepository
     {
-        public IList<GetAllProductEntryDto> GetAll();
-        public ProductEntry FindById(int id);
+        public Task<IList<GetAllProductEntryDto>> GetAll();
+        public Task<ProductEntry> FindById(int id);
         public void Add(ProductEntry product);
-        public GetByIdProductEntryDto GetById(int id);
-        public bool IsExistsById(int id);
+        public Task<GetByIdProductEntryDto> GetById(int id);
+        public Task<bool> IsExistsById(int id);
     }
 }

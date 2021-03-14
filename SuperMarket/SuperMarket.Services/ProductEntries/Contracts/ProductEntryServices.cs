@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.ProductEntries.Contracts
 {
     public interface ProductEntryServices
     {
-        public IList<GetAllProductEntryDto> GetAll();
-        public void Add(AddProductEntryDto dto);
-        public GetByIdProductEntryDto GetById(int id);
+        public Task<IList<GetAllProductEntryDto>> GetAll();
+        public Task Add(AddProductEntryDto dto);
+        public Task<GetByIdProductEntryDto> GetById(int id);
     }
 }

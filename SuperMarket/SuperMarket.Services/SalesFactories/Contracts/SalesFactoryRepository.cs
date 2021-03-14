@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.SalesFactories
 {
     public interface SalesFactoryRepository
     {
-        public IList<GetAllSalesFactoryDto> GetAll();
-        public SalesFactor FindById(int id);
+        public Task<IList<GetAllSalesFactoryDto>> GetAll();
+        public Task<SalesFactor> FindById(int id);
         public void Add(SalesFactor factor);
-        public GetByIdSalesFactoryDto GetById(int id);
-        public bool IsExistsById(int id);
+        public Task<GetByIdSalesFactoryDto> GetById(int id);
+        public Task<bool> IsExistsById(int id);
     }
 }

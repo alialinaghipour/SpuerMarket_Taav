@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.Products.Contracts
 {
     public interface ProductServices
     {
-        public IList<GetAllProductDto> GetAll();
-        public GetByIdProductDto GetById(int id);
-        public void Add(AddProductDto dto);
-        public void Update(int id,UpdateProductDto dto);
-        public void Delete(int id);
+        public Task<IList<GetAllProductDto>> GetAll();
+        public Task<GetByIdProductDto> GetById(int id);
+        public Task Add(AddProductDto dto);
+        public Task Update(int id,UpdateProductDto dto);
+        public Task Delete(int id);
     }
 }

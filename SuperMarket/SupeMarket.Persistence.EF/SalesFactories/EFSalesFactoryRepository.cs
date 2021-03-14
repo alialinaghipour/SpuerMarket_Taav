@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SupeMarket.Persistence.EF.SalesFactories
 {
@@ -25,36 +26,36 @@ namespace SupeMarket.Persistence.EF.SalesFactories
             _set.Add(factor);
         }
 
-        public SalesFactor FindById(int id)
+        public async Task<SalesFactor> FindById(int id)
         {
-            return _set.Find(id);
+            return await _set.FindAsync(id);
         }
 
-        public IList<GetAllSalesFactoryDto> GetAll()
+        public async Task<IList<GetAllSalesFactoryDto>> GetAll()
         {
-            return _set.Select(_ => new GetAllSalesFactoryDto()
+            return await _set.Select(_ => new GetAllSalesFactoryDto()
             {
                 Id = _.Id,
                 Count = _.Count,
                 SalesDate = _.SalesDate,
                 ProductCode = _.ProductCode
-            }).ToList();
+            }).ToListAsync();
         }
 
-        public GetByIdSalesFactoryDto GetById(int id)
+        public async Task<GetByIdSalesFactoryDto> GetById(int id)
         {
-            return _set.Select(_ => new GetByIdSalesFactoryDto()
+            return await _set.Select(_ => new GetByIdSalesFactoryDto()
             {
                 Id = _.Id,
                 Count = _.Count,
                 SalesDate = _.SalesDate,
                 ProductCode = _.ProductCode
-            }).SingleOrDefault();
+            }).SingleOrDefaultAsync();
         }
 
-        public bool IsExistsById(int id)
+        public async Task<bool> IsExistsById(int id)
         {
-            return _set.Any(_ => _.Id == id);
+            return await _set.AnyAsync(_ => _.Id == id);
         }
     }
 }

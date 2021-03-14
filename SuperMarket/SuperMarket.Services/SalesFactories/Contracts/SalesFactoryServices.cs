@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.SalesFactories
 {
     public interface SalesFactoryServices
     {
-        public IList<GetAllSalesFactoryDto> GetAll();
-        public void Add(AddSalesFactorDto dto);
-        public GetByIdSalesFactoryDto GetById(int id);
+        public Task<IList<GetAllSalesFactoryDto>> GetAll();
+        public Task Add(AddSalesFactorDto dto);
+        public Task<GetByIdSalesFactoryDto> GetById(int id);
     }
 }

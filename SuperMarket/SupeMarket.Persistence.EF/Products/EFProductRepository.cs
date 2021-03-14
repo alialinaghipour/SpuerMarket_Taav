@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SupeMarket.Persistence.EF.Products
 {
@@ -30,48 +31,48 @@ namespace SupeMarket.Persistence.EF.Products
             _set.Remove(product);
         }
 
-        public Product FindById(int id)
+        public async Task<Product> FindById(int id)
         {
-            return _set.Find(id);
+            return await _set.FindAsync(id);
         }
 
-        public Product FindByProductCode(string code)
+        public async Task<Product> FindByProductCode(string code)
         {
-            return _set.SingleOrDefault(_ => _.Code == code);
+            return await _set.SingleOrDefaultAsync(_ => _.Code == code);
         }
 
-        public IList<GetAllProductDto> GetAll()
+        public async Task<IList<GetAllProductDto>> GetAll()
         {
-            return _set.Select(_ => new GetAllProductDto()
+            return await _set.Select(_ => new GetAllProductDto()
             {
                 Id=_.Id,
                 Code = _.Code,
                 Count = _.Count,
                 Name = _.Name,
                 Price = _.Price
-            }).ToList();
+            }).ToListAsync();
         }
 
-        public GetByIdProductDto GetById(int id)
+        public async Task<GetByIdProductDto> GetById(int id)
         {
-            return _set.Select(_ => new GetByIdProductDto()
+            return await _set.Select(_ => new GetByIdProductDto()
             {
                 Id = _.Id,
                 Code = _.Code,
                 Count = _.Count,
                 Name = _.Name,
                 Price = _.Price
-            }).SingleOrDefault();
+            }).SingleOrDefaultAsync();
         }
 
-        public bool IsCodeDuplicate(string code)
+        public async Task<bool> IsCodeDuplicate(string code)
         {
-            return _set.Any(_ => _.Code == code);
+            return await _set.AnyAsync(_ => _.Code == code);
         }
 
-        public bool IsExistsById(int id)
+        public async Task<bool> IsExistsById(int id)
         {
-            return _set.Any(_ => _.Id == id);
+            return await _set.AnyAsync(_ => _.Id == id);
 
         }
     }

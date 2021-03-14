@@ -18,21 +18,21 @@ namespace SuperMarket.RestApi.Controllers
         }
 
         [HttpPost]
-        public void Add(AddProductEntryDto dto)
+        public async Task Add(AddProductEntryDto dto)
         {
-            _services.Add(dto);
+            await _services.Add(dto);
         }
 
         [HttpGet]
-        public IList<GetAllProductEntryDto> GetAll()
+        public async Task<IList<GetAllProductEntryDto>> GetAll()
         {
-            return _services.GetAll();
+            return await _services.GetAll();
         }
 
         [HttpGet("{id}")]
-        public GetByIdProductEntryDto GetById(int id)
+        public async Task<GetByIdProductEntryDto> GetById(int id)
         {
-            return _services.GetById(id);
+            return await _services.GetById(id);
         }
     }
 }
