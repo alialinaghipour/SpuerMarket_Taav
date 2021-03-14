@@ -7,7 +7,7 @@ using SuperMarket.Services.SalesFactories;
 
 namespace SuperMarket.RestApi.Controllers
 {
-    [ApiController,Route("api/sales-factory")]
+    [ApiController,Route("api/sales-factories")]
     public class SalesFactoryController : Controller
     {
         private readonly SalesFactoryServices _services;

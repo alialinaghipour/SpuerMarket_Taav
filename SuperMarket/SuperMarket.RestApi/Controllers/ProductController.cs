@@ -7,7 +7,7 @@ using SuperMarket.Services.Products.Contracts;
 
 namespace SuperMarket.RestApi.Controllers
 {
-    [ApiController,Route("api/product")]
+    [ApiController,Route("api/products")]
     public class ProductController : Controller
     {
         private readonly ProductServices _services;

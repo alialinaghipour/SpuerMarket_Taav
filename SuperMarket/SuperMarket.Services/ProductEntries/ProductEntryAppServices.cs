@@ -25,7 +25,7 @@ namespace SuperMarket.Services.ProductEntries
         {
             CheckedInformation(dto.IsInformationCorrect);
 
-            CheckedCountMoreZero(dto.Count);
+          //  CheckedCountMoreZero(dto.Count);
 
             var product = _productRepository.FindByProductCode(dto.ProdcutCode);
 

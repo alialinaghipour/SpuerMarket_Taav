@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.Entities", "Sup
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.Services", "SuperMarket.Services\SuperMarket.Services.csproj", "{C2769E55-DE31-4F54-91A7-735AC3E81D4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupeMarket.Persistence.EF", "SupeMarket.Persistence.EF\SupeMarket.Persistence.EF.csproj", "{DDB411C3-5C6D-4396-8346-B8C72768B58C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.Persistence.EF", "SupeMarket.Persistence.EF\SuperMarket.Persistence.EF.csproj", "{DDB411C3-5C6D-4396-8346-B8C72768B58C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Migrations", "SuperMarket.Migrations\SuperMarket.Migrations.csproj", "{78A018FB-854D-451E-A282-F074B72FE05C}"
 EndProject
