@@ -5,6 +5,7 @@ using SuperMarket.Services.ProductCategories.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.ProductCategories
 {
@@ -19,10 +20,10 @@ namespace SuperMarket.Services.ProductCategories
             _repository = repository;
         }
 
-        public void Add(AddProductCategoryDto dto)
+        public async Task Add(AddProductCategoryDto dto)
         {
 
-            CheckedTitleDeuplicate(dto.Tilte);
+            await CheckedTitleDeuplicate(dto.Tilte);
 
             ProductCategory category = new ProductCategory()
             {
@@ -34,29 +35,29 @@ namespace SuperMarket.Services.ProductCategories
             _unitOfWork.Complete();
         }
 
-        private void CheckedTitleDeuplicate(string title)
+        private async Task CheckedTitleDeuplicate(string title)
         {
-            if (_repository.IsTitleDuplicate(title))
+            if (await _repository.IsTitleDuplicate(title))
             {
                 //خطا میسازم ، که فعلا حال ندارم
                 throw new Exception();
             }
         }
 
-        public void Update(int id,UpdateProductCategoryDto dto)
+        public async Task Update(int id,UpdateProductCategoryDto dto)
         {
-            var category = _repository.FindById(id);
+            var category =await  _repository.FindById(id);
 
             CheckedProductCategoryExists(category);
 
-            CheckedTitleDeuplicate(dto.Tilte);
+            await CheckedTitleDeuplicate(dto.Tilte);
 
-            category.Tilte = dto.Tilte;
+             category.Tilte = dto.Tilte;
 
             _unitOfWork.Complete();
         }
 
-        private  void CheckedProductCategoryExists(ProductCategory category)
+        private void CheckedProductCategoryExists(ProductCategory category)
         {
             if (category == null)
             {
@@ -65,9 +66,9 @@ namespace SuperMarket.Services.ProductCategories
             }
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var category = _repository.FindById(id);
+            var category =await _repository.FindById(id);
 
             CheckedProductCategoryExists(category);
 
@@ -76,25 +77,25 @@ namespace SuperMarket.Services.ProductCategories
             _unitOfWork.Complete();
         }
 
-        private void CheckedExisteById(int id)
+        private async Task CheckedExisteById(int id)
         {
-            if (!_repository.IsExistsById(id))
+            if (!await _repository.IsExistsById(id))
             {
                 //خطا میسازم ، که فعلا حال ندارم
                 throw new Exception();
             }
         }
 
-        public FindByIdProductCategoryDto FindById(int id)
+        public async Task<FindByIdProductCategoryDto> FindById(int id)
         {
-            CheckedExisteById(id);
+           await CheckedExisteById(id);
 
-           return _repository.GetById(id);
+           return await _repository.GetById(id);
         }
 
-        public IList<GetAllProductCategoryDto> GetAll()
+        public async Task<IList<GetAllProductCategoryDto>> GetAll()
         {
-           return _repository.GetAll();
+           return await _repository.GetAll();
         }
 
     }

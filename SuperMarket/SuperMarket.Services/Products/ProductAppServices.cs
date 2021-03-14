@@ -5,6 +5,7 @@ using SuperMarket.Services.Products.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.Products
 {
@@ -50,9 +51,9 @@ namespace SuperMarket.Services.Products
             }
         }
 
-        private void CheckedProductCategoryExistsById(int categoryId)
+        private async Task CheckedProductCategoryExistsById(int categoryId)
         {
-            if (!_cagetoryRepository.IsExistsById(categoryId))
+            if (!await _cagetoryRepository.IsExistsById(categoryId))
             {
                 //بعدا مینویسم
                 throw new Exception();

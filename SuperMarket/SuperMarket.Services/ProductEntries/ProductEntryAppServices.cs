@@ -23,9 +23,8 @@ namespace SuperMarket.Services.ProductEntries
 
         public void Add(AddProductEntryDto dto)
         {
-            CheckedInformation(dto.IsInformationCorrect);
 
-          //  CheckedCountMoreZero(dto.Count);
+            CheckedCountMoreZero(dto.Count);
 
             var product = _productRepository.FindByProductCode(dto.ProdcutCode);
 
@@ -58,15 +57,6 @@ namespace SuperMarket.Services.ProductEntries
         {
             const int oneNumber = 1;
             if (count < oneNumber)
-            {
-                //**********
-                throw new Exception();
-            }
-        }
-
-        private void CheckedInformation(bool info)
-        {
-            if (!info)
             {
                 //**********
                 throw new Exception();

@@ -1,15 +1,17 @@
-﻿using System;
+﻿using SuperMarket.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.ProductCategories.Contracts
 {
     public interface ProductCategoryServices
     {
-        public IList<GetAllProductCategoryDto> GetAll();
-        public FindByIdProductCategoryDto FindById(int id);
-        public void Add(AddProductCategoryDto dto);
-        public void Update(int id, UpdateProductCategoryDto dto);
-        public void Delete(int id);
+        public Task<IList<GetAllProductCategoryDto>> GetAll();
+        public Task<FindByIdProductCategoryDto> FindById(int id);
+        public Task Add(AddProductCategoryDto dto);
+        public Task Update(int id, UpdateProductCategoryDto dto);
+        public Task Delete(int id);
     }
 }

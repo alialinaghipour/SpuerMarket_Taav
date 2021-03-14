@@ -24,27 +24,27 @@ namespace SuperMarket.RestApi.Controllers
         }
 
         [HttpGet]
-        public IList<GetAllProductCategoryDto> GetAll()
+        public async Task<IList<GetAllProductCategoryDto>> GetAll()
         {
-            return _services.GetAll();
+            return await _services.GetAll();
         }
 
         [HttpGet("{id}")]
-        public FindByIdProductCategoryDto GetById(int id)
+        public async Task<FindByIdProductCategoryDto> GetById(int id)
         {
-            return _services.FindById(id);
+            return await _services.FindById(id);
         }
 
         [HttpPut("{id}")]
-        public void Update(int id,UpdateProductCategoryDto dto)
+        public async Task Update(int id,UpdateProductCategoryDto dto)
         {
-            _services.Update(id,dto);
+           await _services.Update(id,dto);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _services.Delete(id);
+           await _services.Delete(id);
         }
     }
 }

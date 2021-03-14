@@ -10,6 +10,5 @@ namespace SuperMarket.Services.ProductEntries.Contracts
         public string ProdcutCode { get; set; }
         [Min(1)]
         public int Count { get; set; }
-        public bool IsInformationCorrect { get; set; }
     }
 }

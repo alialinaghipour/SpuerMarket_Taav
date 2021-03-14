@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SupeMarket.Persistence.EF.ProductCategories
 {
@@ -31,37 +32,37 @@ namespace SupeMarket.Persistence.EF.ProductCategories
             _set.Remove(category);
         }
 
-        public ProductCategory FindById(int id)
+        public async Task<ProductCategory> FindById(int id)
         {
-            return _set.Find(id);
+            return await _set.FindAsync(id);
         }
 
-        public IList<GetAllProductCategoryDto> GetAll()
+        public async Task<IList<GetAllProductCategoryDto>> GetAll()
         {
-            return _set.Select(_ => new GetAllProductCategoryDto()
+            return await _set.Select(_ => new GetAllProductCategoryDto()
             {
                 Id = _.Id,
                 Tilte = _.Tilte
-            }).ToList();
+            }).ToListAsync();
         }
 
-        public FindByIdProductCategoryDto GetById(int id)
+        public async Task<FindByIdProductCategoryDto> GetById(int id)
         {
-            return _set.Select(_ => new FindByIdProductCategoryDto()
+            return await _set.Select(_ => new FindByIdProductCategoryDto()
             {
                 Id = _.Id,
                 Tilte = _.Tilte
-            }).SingleOrDefault();
+            }).SingleOrDefaultAsync();
         }
 
-        public bool IsExistsById(int id)
+        public async Task<bool> IsExistsById(int id)
         {
-            return _context.ProductCategories.Any(_ => _.Id == id);
+            return await _context.ProductCategories.AnyAsync(_ => _.Id == id);
         }
 
-        public bool IsTitleDuplicate(string title)
+        public async Task<bool> IsTitleDuplicate(string title)
         {
-            return _context.ProductCategories.Any(_ => _.Tilte == title);
+            return await _context.ProductCategories.AnyAsync(_ => _.Tilte == title);
         }
     }
 }

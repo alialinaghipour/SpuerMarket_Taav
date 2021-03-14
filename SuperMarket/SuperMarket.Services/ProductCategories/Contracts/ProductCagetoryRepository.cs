@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarket.Services.ProductCategories.Contracts
 {
     public interface ProductCagetoryRepository
     {
-        public IList<GetAllProductCategoryDto> GetAll();
-        public FindByIdProductCategoryDto GetById(int id);
-        public ProductCategory FindById(int id);
+        public Task<IList<GetAllProductCategoryDto>> GetAll();
+        public Task<FindByIdProductCategoryDto> GetById(int id);
+        public Task<ProductCategory> FindById(int id);
         public void Add(ProductCategory category);
         public void Delete(ProductCategory category);
-        public bool IsExistsById(int id);
-        public bool IsTitleDuplicate(string title);
+        public Task<bool> IsExistsById(int id);
+        public Task<bool> IsTitleDuplicate(string title);
     }
 }
