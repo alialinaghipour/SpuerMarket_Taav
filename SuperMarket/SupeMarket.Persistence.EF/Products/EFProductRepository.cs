@@ -44,6 +44,7 @@ namespace SupeMarket.Persistence.EF.Products
         {
             return _set.Select(_ => new GetAllProductDto()
             {
+                Id=_.Id,
                 Code = _.Code,
                 Count = _.Count,
                 Name = _.Name,
@@ -55,6 +56,7 @@ namespace SupeMarket.Persistence.EF.Products
         {
             return _set.Select(_ => new GetByIdProductDto()
             {
+                Id = _.Id,
                 Code = _.Code,
                 Count = _.Count,
                 Name = _.Name,
