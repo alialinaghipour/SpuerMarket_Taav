@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.RestApi", "SuperMarket.RestApi\SuperMarket.RestApi.csproj", "{3F842771-922B-4301-93AC-7003DAF588E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Infrastructure", "SuperMarket.Infrastructure\SuperMarket.Infrastructure.csproj", "{53CB8B80-0646-4D2A-976A-1BB4D4BB3A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.Infrastructure", "SuperMarket.Infrastructure\SuperMarket.Infrastructure.csproj", "{53CB8B80-0646-4D2A-976A-1BB4D4BB3A45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Entities", "SuperMarket.Entities\SuperMarket.Entities.csproj", "{C74F7A41-09D4-4886-BFBD-5D3AF4B0FB0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.Entities", "SuperMarket.Entities\SuperMarket.Entities.csproj", "{C74F7A41-09D4-4886-BFBD-5D3AF4B0FB0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Services", "SuperMarket.Services\SuperMarket.Services.csproj", "{C2769E55-DE31-4F54-91A7-735AC3E81D4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarket.Services", "SuperMarket.Services\SuperMarket.Services.csproj", "{C2769E55-DE31-4F54-91A7-735AC3E81D4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupeMarket.Persistence.EF", "SupeMarket.Persistence.EF\SupeMarket.Persistence.EF.csproj", "{DDB411C3-5C6D-4396-8346-B8C72768B58C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupeMarket.Persistence.EF", "SupeMarket.Persistence.EF\SupeMarket.Persistence.EF.csproj", "{DDB411C3-5C6D-4396-8346-B8C72768B58C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMarket.Migrations", "SuperMarket.Migrations\SuperMarket.Migrations.csproj", "{78A018FB-854D-451E-A282-F074B72FE05C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDB411C3-5C6D-4396-8346-B8C72768B58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A018FB-854D-451E-A282-F074B72FE05C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A018FB-854D-451E-A282-F074B72FE05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A018FB-854D-451E-A282-F074B72FE05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A018FB-854D-451E-A282-F074B72FE05C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
