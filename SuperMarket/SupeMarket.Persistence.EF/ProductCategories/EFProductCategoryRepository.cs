@@ -14,7 +14,7 @@ namespace SupeMarket.Persistence.EF.ProductCategories
         private readonly EFDataContext _context;
         private readonly DbSet<ProductCategory> _set;
 
-        public EFProductCategoryRepository(EFDataContext context,DbSet<ProductCategory> set)
+        public EFProductCategoryRepository(EFDataContext context)
         {
            
             _context = context;

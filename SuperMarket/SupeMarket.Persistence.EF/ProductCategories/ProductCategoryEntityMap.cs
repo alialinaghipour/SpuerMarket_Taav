@@ -18,6 +18,11 @@ namespace SupeMarket.Persistence.EF.ProductCategories
             builder.Property(_ => _.Id).ValueGeneratedOnAdd();
 
             builder.Property(_ => _.Tilte).IsRequired().HasMaxLength(40);
+
+            builder.HasMany(_ => _.Products)
+                .WithOne(_ => _.ProductCategory)
+                .HasForeignKey(_ => _.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

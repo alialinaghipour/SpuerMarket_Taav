@@ -65,9 +65,9 @@ namespace SuperMarket.Services.Products
 
             CheckedProductCategoryExistsById(dto.CategoryId);
 
-            var product = FindById(id);
+            var product = _repository.FindById(id);
 
-            CheckedExistsProduct()
+            CheckedExistsProduct(product);
 
             product.Code = dto.Code;
             product.CategoryId = dto.CategoryId;
@@ -89,9 +89,11 @@ namespace SuperMarket.Services.Products
 
         public void Delete(int id)
         {
-            var product = GetById(id);
+            var product = _repository.FindById(id);
 
-            _repository.Delete(id);
+            CheckedExistsProduct(product);
+
+            _repository.Delete(product);
 
             _unitOfWork.Complete();
         }
