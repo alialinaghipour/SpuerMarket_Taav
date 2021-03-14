@@ -2,6 +2,7 @@
 using SuperMarket.Entities;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace SupeMarket.Persistence.EF
@@ -16,6 +17,12 @@ namespace SupeMarket.Persistence.EF
         public EFDataContext(DbContextOptions options):base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
