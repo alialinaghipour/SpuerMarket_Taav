@@ -10,7 +10,6 @@ namespace SuperMarket.Services.ProductEntries.Contracts
         public IList<GetAllProductEntryDto> GetAll();
         public ProductEntry FindById(int id);
         public void Add(ProductEntry product);
-        public void Delete(ProductEntry product);
         public GetByIdProductEntryDto GetById(int id);
         public bool IsExistsById(int id);
     }

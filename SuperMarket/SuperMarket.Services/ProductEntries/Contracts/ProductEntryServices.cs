@@ -8,8 +8,6 @@ namespace SuperMarket.Services.ProductEntries.Contracts
     {
         public IList<GetAllProductEntryDto> GetAll();
         public void Add(AddProductEntryDto dto);
-        public void Update(UpdateProductEntryDto dto);
-        public void Delete(int id);
         public GetByIdProductEntryDto GetById(int id);
     }
 }
