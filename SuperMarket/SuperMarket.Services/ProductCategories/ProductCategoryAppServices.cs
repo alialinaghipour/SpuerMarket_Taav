@@ -23,7 +23,7 @@ namespace SuperMarket.Services.ProductCategories
         public async Task Add(AddProductCategoryDto dto)
         {
 
-            await CheckedTitleDeuplicate(dto.Tilte);
+           await CheckedTitleDeuplicate(dto.Tilte);
 
             ProductCategory category = new ProductCategory()
             {
