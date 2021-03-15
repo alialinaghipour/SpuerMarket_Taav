@@ -11,6 +11,11 @@ namespace SuperMarket.Migrations.Migrations
 
         public override void Up()
         {
+            Create.Table("WareHouses")
+                .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
+                .WithColumn("Count").AsInt32().Nullable()
+                .WithColumn("Name").AsString().NotNullable();
+
             Create.Table("ProductCategories")
                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                .WithColumn("Tilte").AsString(50).NotNullable().Unique();
@@ -21,6 +26,9 @@ namespace SuperMarket.Migrations.Migrations
                 .WithColumn("Code").AsString(10).NotNullable().Unique()
                 .WithColumn("Count").AsInt32().NotNullable().WithDefaultValue(0)
                 .WithColumn("Price").AsInt32().NotNullable().WithDefaultValue(0)
+                .WithColumn("MinimumInventory").AsInt32().NotNullable()
+                .WithColumn("WareHouseId").AsInt32().NotNullable()
+                     .ForeignKey("FK_Products_WareHouses", "WareHouses", "Id")
                 .WithColumn("CategoryId").AsInt32().NotNullable()
                      .ForeignKey("FK_Products_ProductCategories", "ProductCategories", "Id");
                      //.OnDelete;
@@ -44,10 +52,11 @@ namespace SuperMarket.Migrations.Migrations
         }
         public override void Down()
         {
-            Delete.FromTable("ProductCategories");
-            Delete.FromTable("Products");
-            Delete.FromTable("ProductEntries");
-            Delete.FromTable("SalesFactors");
+            Delete.Table("ProductEntries");
+            Delete.Table("SalesFactors");
+            Delete.Table("Products");
+            Delete.Table("WareHouses");
+            Delete.Table("ProductCategories");
             //Delete.ForeignKey("FK_Products_ProductCategories");
         }
     }

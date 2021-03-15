@@ -49,7 +49,9 @@ namespace SupeMarket.Persistence.EF.Products
                 Code = _.Code,
                 Count = _.Count,
                 Name = _.Name,
-                Price = _.Price
+                Price = _.Price,
+                WareHouseId=_.WareHouseId,
+                CategoryId = _.CategoryId
             }).ToListAsync();
         }
 
@@ -61,8 +63,10 @@ namespace SupeMarket.Persistence.EF.Products
                 Code = _.Code,
                 Count = _.Count,
                 Name = _.Name,
-                Price = _.Price
-            }).SingleOrDefaultAsync();
+                Price = _.Price,
+                WareHouseId = _.WareHouseId,
+                CategoryId=_.CategoryId
+            }).SingleAsync();
         }
 
         public async Task<bool> IsCodeDuplicate(string code)

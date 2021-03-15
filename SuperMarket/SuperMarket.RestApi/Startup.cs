@@ -16,6 +16,7 @@ using SupeMarket.Persistence.EF.ProductEntries;
 using SupeMarket.Persistence.EF.Products;
 using SupeMarket.Persistence.EF.SalesFactories;
 using SuperMarket.Infrastructure.Application;
+using SuperMarket.Persistence.EF.WareHouses;
 using SuperMarket.Services.ProductCategories;
 using SuperMarket.Services.ProductCategories.Contracts;
 using SuperMarket.Services.ProductEntries;
@@ -23,6 +24,7 @@ using SuperMarket.Services.ProductEntries.Contracts;
 using SuperMarket.Services.Products;
 using SuperMarket.Services.Products.Contracts;
 using SuperMarket.Services.SalesFactories;
+using SuperMarket.Services.WareHouses;
 
 namespace SuperMarket.RestApi
 {
@@ -60,6 +62,11 @@ namespace SuperMarket.RestApi
             services.AddScoped<SalesFactoryServices, SalesFactoryAppServices>();
 
             services.AddScoped<SalesFactoryRepository, EFSalesFactoryRepository>();
+
+
+            services.AddScoped<WareHouseServices, WareHouseAppServices>();
+            services.AddScoped<WareHouseRepository, EFWareHouseRepository>();
+
 
             services.AddScoped<UnitOfWork, EFUnitOfWork>();
 

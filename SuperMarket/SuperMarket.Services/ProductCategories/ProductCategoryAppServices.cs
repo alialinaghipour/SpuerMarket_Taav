@@ -20,7 +20,7 @@ namespace SuperMarket.Services.ProductCategories
             _repository = repository;
         }
 
-        public async Task Add(AddProductCategoryDto dto)
+        public async Task<int> Add(AddProductCategoryDto dto)
         {
 
            await CheckedTitleDeuplicate(dto.Tilte);
@@ -33,6 +33,8 @@ namespace SuperMarket.Services.ProductCategories
             _repository.Add(category);
 
             _unitOfWork.Complete();
+
+            return category.Id;
         }
 
         private async Task CheckedTitleDeuplicate(string title)

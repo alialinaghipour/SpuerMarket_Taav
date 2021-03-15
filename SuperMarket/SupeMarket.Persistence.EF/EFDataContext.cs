@@ -29,6 +29,7 @@ namespace SupeMarket.Persistence.EF
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductEntry> ProductEntries { get; set; }
         public DbSet<SalesFactor> SalesFactors { get; set; }
+        public DbSet<WareHouse> WareHouses { get; set; }
 
     }
 }

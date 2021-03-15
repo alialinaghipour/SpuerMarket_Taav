@@ -8,7 +8,7 @@ namespace SuperMarket.Services.SalesFactories
     public interface SalesFactoryServices
     {
         public Task<IList<GetAllSalesFactoryDto>> GetAll();
-        public Task Add(AddSalesFactorDto dto);
+        public Task<int> Add(AddSalesFactorDto dto);
         public Task<GetByIdSalesFactoryDto> GetById(int id);
     }
 }

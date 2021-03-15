@@ -22,7 +22,7 @@ namespace SuperMarket.Services.ProductEntries
             _productRepository = productRepository;
         }
 
-        public async Task Add(AddProductEntryDto dto)
+        public async Task<int> Add(AddProductEntryDto dto)
         {
 
             var product = await _productRepository.FindByProductCode(dto.ProdcutCode);
@@ -41,6 +41,8 @@ namespace SuperMarket.Services.ProductEntries
             _repository.Add(entry);
 
             _unitOfWork.Complete();
+
+            return entry.Id;
         }
 
         private void CheckedExistsProduct(Product product)

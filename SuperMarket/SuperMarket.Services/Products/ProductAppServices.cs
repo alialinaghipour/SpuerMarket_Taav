@@ -22,7 +22,7 @@ namespace SuperMarket.Services.Products
             _cagetoryRepository = cagetoryRepository;
         }
 
-        public async Task Add(AddProductDto dto)
+        public async Task<int> Add(AddProductDto dto)
         {
             await CheckedCodeDuplicate(dto.Code);
 
@@ -34,12 +34,15 @@ namespace SuperMarket.Services.Products
                 CategoryId = dto.CategoryId,
                 Name = dto.Name,
                 Count = dto.Count,
-                Price = dto.Price
+                Price = dto.Price,
+                WareHouseId=dto.WareHouseId
             };
 
             _repository.Add(product);
 
             _unitOfWork.Complete();
+
+            return product.Id;
         }
 
         private async Task CheckedCodeDuplicate(string code)
@@ -75,6 +78,7 @@ namespace SuperMarket.Services.Products
             product.Count = dto.Count;
             product.Name = dto.Name;
             product.Price = dto.Price;
+            product.WareHouseId = dto.WareHouseId;
 
             _unitOfWork.Complete();
         }

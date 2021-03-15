@@ -20,7 +20,7 @@ namespace SuperMarket.Services.SalesFactories
             _repository = repository;
             _productRepository = productRepository;
         }
-        public async Task Add(AddSalesFactorDto dto)
+        public async Task<int> Add(AddSalesFactorDto dto)
         {
             CheckedInformation(dto.IsInformation);
 
@@ -40,6 +40,8 @@ namespace SuperMarket.Services.SalesFactories
             _repository.Add(factor);
 
             _unitOfWork.Complete();
+
+            return factor.Id;
         }
 
         private void CheckedExistsProduct(Product product)

@@ -9,7 +9,7 @@ namespace SuperMarket.Services.Products.Contracts
     {
         public Task<IList<GetAllProductDto>> GetAll();
         public Task<GetByIdProductDto> GetById(int id);
-        public Task Add(AddProductDto dto);
+        public Task<int> Add(AddProductDto dto);
         public Task Update(int id,UpdateProductDto dto);
         public Task Delete(int id);
     }

@@ -18,9 +18,9 @@ namespace SuperMarket.RestApi.Controllers
         }
 
         [HttpPost]
-        public async Task Add(AddSalesFactorDto dto)
+        public async Task<int> Add(AddSalesFactorDto dto)
         {
-            await _services.Add(dto);
+           return await _services.Add(dto);
         }
 
         [HttpGet]
