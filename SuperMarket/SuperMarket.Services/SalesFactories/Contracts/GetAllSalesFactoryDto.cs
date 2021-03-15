@@ -8,5 +8,6 @@ namespace SuperMarket.Services.SalesFactories
         public string ProductCode { get; set; }
         public int Count { get; set; }
         public DateTime SalesDate { get; set; }
+        public int TotalPrice { get; set; }
     }
 }

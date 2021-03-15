@@ -65,6 +65,7 @@ namespace SuperMarket.Services.SalesFactories
 
         public async Task<IList<GetAllSalesFactoryDto>> GetAll()
         {
+
             return await _repository.GetAll();
         }
 

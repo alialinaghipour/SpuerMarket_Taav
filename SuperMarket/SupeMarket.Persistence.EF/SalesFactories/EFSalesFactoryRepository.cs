@@ -38,12 +38,15 @@ namespace SupeMarket.Persistence.EF.SalesFactories
 
         public async Task<IList<GetAllSalesFactoryDto>> GetAll()
         {
+            //var good = _context.Products.ToList();
             return await _set.Select(_ => new GetAllSalesFactoryDto()
             {
                 Id = _.Id,
                 Count = _.Count,
                 SalesDate = _.SalesDate,
-                ProductCode = _.ProductCode
+                ProductCode = _.ProductCode,
+               // TotalPrice = _.pro
+                
             }).ToListAsync();
         }
 

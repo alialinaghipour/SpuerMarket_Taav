@@ -36,15 +36,15 @@ namespace SuperMarket.RestApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Update(int id,UpdateProductDto dto)
+        public async Task Update(int id,UpdateProductDto dto)
         {
-            _services.Update(id, dto);
+           await _services.Update(id, dto);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _services.Delete(id);
+           await _services.Delete(id);
         }
     }
 }
