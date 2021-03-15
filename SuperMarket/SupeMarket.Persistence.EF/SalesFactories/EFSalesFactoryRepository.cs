@@ -26,6 +26,11 @@ namespace SupeMarket.Persistence.EF.SalesFactories
             _set.Add(factor);
         }
 
+        public void Delete(SalesFactor factor)
+        {
+            _set.Remove(factor);
+        }
+
         public async Task<SalesFactor> FindById(int id)
         {
             return await _set.FindAsync(id);

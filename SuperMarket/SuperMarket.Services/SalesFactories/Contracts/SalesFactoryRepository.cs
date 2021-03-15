@@ -11,6 +11,7 @@ namespace SuperMarket.Services.SalesFactories
         public Task<IList<GetAllSalesFactoryDto>> GetAll();
         public Task<SalesFactor> FindById(int id);
         public void Add(SalesFactor factor);
+        public void Delete(SalesFactor factor);
         public Task<GetByIdSalesFactoryDto> GetById(int id);
         public Task<bool> IsExistsById(int id);
     }

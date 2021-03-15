@@ -12,6 +12,7 @@ namespace SuperMarket.Services.Products.Contracts
         public int Price { get; set; }
         public int CategoryId { get; set; }
         public int WareHouseId { get; set; }
+        public int MinimumInventory { get; set; }
 
     }
 }

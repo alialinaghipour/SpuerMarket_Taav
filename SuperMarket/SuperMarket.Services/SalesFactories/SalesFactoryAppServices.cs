@@ -22,11 +22,12 @@ namespace SuperMarket.Services.SalesFactories
         }
         public async Task<int> Add(AddSalesFactorDto dto)
         {
-            CheckedInformation(dto.IsInformation);
 
             var product =await _productRepository.FindByProductCode(dto.ProductCode);
 
             CheckedExistsProduct(product);
+
+            CheckedProductCountMoreFormFactorCount(product.Count, dto.Count);
 
             product.Count -= dto.Count;
 
@@ -44,6 +45,14 @@ namespace SuperMarket.Services.SalesFactories
             return factor.Id;
         }
 
+        private void CheckedProductCountMoreFormFactorCount(int productCount,int factorCount)
+        {
+            if (productCount < factorCount)
+            {
+                throw new Exception();
+            }
+        }
+
         private void CheckedExistsProduct(Product product)
         {
             if (product == null)
@@ -53,14 +62,6 @@ namespace SuperMarket.Services.SalesFactories
             }
         }
 
-        private void CheckedInformation(bool info)
-        {
-            if (!info)
-            {
-                //**********
-                throw new Exception();
-            }
-        }
 
         public async Task<IList<GetAllSalesFactoryDto>> GetAll()
         {
@@ -80,6 +81,25 @@ namespace SuperMarket.Services.SalesFactories
                 //*********
                 throw new Exception();
             }
+        }
+
+        public async Task Delete(int id)
+        {
+            var factor = await _repository.FindById(id);
+
+            if (factor == null)
+            {
+                //*****
+                throw new Exception();
+            }
+
+            var product = await _productRepository.FindByProductCode(factor.ProductCode);
+
+            product.Count += factor.Count;
+
+            _repository.Delete(factor);
+
+            _unitOfWork.Complete();
         }
     }
 }

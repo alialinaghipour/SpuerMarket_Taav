@@ -51,7 +51,8 @@ namespace SupeMarket.Persistence.EF.Products
                 Name = _.Name,
                 Price = _.Price,
                 WareHouseId=_.WareHouseId,
-                CategoryId = _.CategoryId
+                CategoryId = _.CategoryId,
+                MinimumInventory=_.MinimumInventory
             }).ToListAsync();
         }
 
@@ -65,7 +66,8 @@ namespace SupeMarket.Persistence.EF.Products
                 Name = _.Name,
                 Price = _.Price,
                 WareHouseId = _.WareHouseId,
-                CategoryId=_.CategoryId
+                CategoryId=_.CategoryId,
+                MinimumInventory=_.MinimumInventory,
             }).SingleAsync();
         }
 

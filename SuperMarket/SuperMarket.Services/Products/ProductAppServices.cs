@@ -35,7 +35,8 @@ namespace SuperMarket.Services.Products
                 Name = dto.Name,
                 Count = dto.Count,
                 Price = dto.Price,
-                WareHouseId=dto.WareHouseId
+                WareHouseId=dto.WareHouseId,
+                MinimumInventory=dto.MinimumInventory
             };
 
             _repository.Add(product);
@@ -79,6 +80,7 @@ namespace SuperMarket.Services.Products
             product.Name = dto.Name;
             product.Price = dto.Price;
             product.WareHouseId = dto.WareHouseId;
+            product.MinimumInventory = dto.MinimumInventory;
 
             _unitOfWork.Complete();
         }
