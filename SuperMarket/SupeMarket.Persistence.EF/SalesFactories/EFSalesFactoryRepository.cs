@@ -39,26 +39,54 @@ namespace SupeMarket.Persistence.EF.SalesFactories
         public async Task<IList<GetAllSalesFactoryDto>> GetAll()
         {
             //var good = _context.Products.ToList();
-            return await _set.Select(_ => new GetAllSalesFactoryDto()
-            {
-                Id = _.Id,
-                Count = _.Count,
-                SalesDate = _.SalesDate,
-                ProductCode = _.ProductCode,
-               // TotalPrice = _.pro
+            var query = (from saleFactor in _set
+                         join product in _context.Products on saleFactor.ProductCode equals product.Code
+                         select new GetAllSalesFactoryDto
+                         {
+                             Id = saleFactor.Id,
+                             Count = saleFactor.Count,
+                             SalesDate = saleFactor.SalesDate,
+                             ProductCode = saleFactor.ProductCode,
+                             TotalPrice = product.Price*saleFactor.Count
+                         }).ToListAsync();
+
+            return await query;
+
+            //return await _set.Select(_ => new GetAllSalesFactoryDto()
+            //{
+            //    Id = _.Id,
+            //    Count = _.Count,
+            //    SalesDate = _.SalesDate,
+            //    ProductCode = _.ProductCode,
+            //   // TotalPrice = _.pro
                 
-            }).ToListAsync();
+            //}).ToListAsync();
         }
 
         public async Task<GetByIdSalesFactoryDto> GetById(int id)
         {
-            return await _set.Select(_ => new GetByIdSalesFactoryDto()
-            {
-                Id = _.Id,
-                Count = _.Count,
-                SalesDate = _.SalesDate,
-                ProductCode = _.ProductCode
-            }).SingleOrDefaultAsync();
+
+            var query = (from saleFactor in _set
+                         join product in _context.Products on saleFactor.ProductCode equals product.Code
+                         where saleFactor.Id == id
+                         select new GetByIdSalesFactoryDto
+                         {
+                             Id = saleFactor.Id,
+                             Count = saleFactor.Count,
+                             SalesDate = saleFactor.SalesDate,
+                             ProductCode = saleFactor.ProductCode,
+                             TotalPrice = product.Price * saleFactor.Count
+                         }).SingleOrDefaultAsync();
+
+            return await query;
+
+            //return await _set.Select(_ => new GetByIdSalesFactoryDto()
+            //{
+            //    Id = _.Id,
+            //    Count = _.Count,
+            //    SalesDate = _.SalesDate,
+            //    ProductCode = _.ProductCode
+            //}).SingleOrDefaultAsync();
         }
 
         public async Task<bool> IsExistsById(int id)
