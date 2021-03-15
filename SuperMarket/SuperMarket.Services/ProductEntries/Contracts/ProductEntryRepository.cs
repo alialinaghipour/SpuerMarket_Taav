@@ -11,6 +11,7 @@ namespace SuperMarket.Services.ProductEntries.Contracts
         public Task<IList<GetAllProductEntryDto>> GetAll();
         public Task<ProductEntry> FindById(int id);
         public void Add(ProductEntry product);
+        public void Delete(ProductEntry product);
         public Task<GetByIdProductEntryDto> GetById(int id);
         public Task<bool> IsExistsById(int id);
     }

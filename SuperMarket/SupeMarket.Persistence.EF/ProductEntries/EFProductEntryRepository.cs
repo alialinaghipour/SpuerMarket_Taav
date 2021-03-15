@@ -27,6 +27,11 @@ namespace SupeMarket.Persistence.EF.ProductEntries
             _set.Add(product);
         }
 
+        public void Delete(ProductEntry product)
+        {
+            _set.Remove(product);
+        }
+
         public async Task<ProductEntry> FindById(int id)
         {
             return await _set.FindAsync(id);

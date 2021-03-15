@@ -73,5 +73,30 @@ namespace SuperMarket.Services.ProductEntries
                 throw new Exception();
             }
         }
+
+        public async Task Delete(int id)
+        {
+            var productEntry = await _repository.FindById(id);
+
+            if (productEntry == null)
+            {
+                //********
+                throw new Exception();
+            }
+
+            var product = await _productRepository.FindByProductCode(productEntry.ProdcutCode);
+
+            if(product.Count< productEntry.Count)
+            {
+                //**********
+                throw new Exception();
+            }
+
+            product.Count -= productEntry.Count;
+
+            _repository.Delete(productEntry);
+
+            _unitOfWork.Complete();
+        }
     }
 }
